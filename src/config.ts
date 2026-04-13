@@ -33,6 +33,66 @@ Do NOT use for HTTP header analysis -- use utility_parse_http_headers instead. D
         },
         required: ["userAgent"],
       },
+      outputSchema: {
+          "type": "object",
+          "properties": {
+            "raw": {
+              "type": "string",
+              "description": "Raw user agent string"
+            },
+            "browser": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              }
+            },
+            "os": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                }
+              }
+            },
+            "device": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "brand": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                }
+              }
+            },
+            "isBot": {
+              "type": "boolean",
+              "description": "Whether UA is a bot/crawler"
+            },
+            "isMobile": {
+              "type": "boolean"
+            },
+            "length": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "raw",
+            "browser",
+            "os"
+          ]
+        },
     },
   ],
 };

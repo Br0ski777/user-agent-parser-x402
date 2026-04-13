@@ -3,7 +3,7 @@ import type { ApiConfig } from "./shared";
 export const API_CONFIG: ApiConfig = {
   name: "user-agent-parser",
   slug: "user-agent-parser",
-  description: "Parse user agent strings to detect browser, OS, device, and bot info.",
+  description: "Parse any user agent string into structured data: browser, OS, device type, engine, and bot detection in one call.",
   version: "1.0.0",
   routes: [
     {
@@ -12,7 +12,20 @@ export const API_CONFIG: ApiConfig = {
       price: "$0.001",
       description: "Parse a user agent string into structured data",
       toolName: "utility_parse_user_agent",
-      toolDescription: "Use this when you need to parse a user agent string to identify browser name/version, operating system, device type (mobile/desktop/tablet), and whether it's a bot/crawler. Returns structured data about the client. Do NOT use for HTTP header analysis — use utility_parse_http_headers instead. Do NOT use for web scraping — use web_scrape_to_markdown instead.",
+      toolDescription: `Use this when you need to parse a user agent string to identify the client's browser, OS, device type, and bot status. Returns fully structured data.
+
+1. browser -- name and version (e.g. "Chrome 120.0")
+2. os -- operating system name and version (e.g. "Windows 11")
+3. device -- type (desktop, mobile, tablet), vendor, and model
+4. engine -- rendering engine (Blink, Gecko, WebKit)
+5. isBot -- boolean indicating if the UA belongs to a crawler/bot
+6. botName -- name of the bot if detected (e.g. "Googlebot")
+
+Example output: {"browser":{"name":"Chrome","version":"120.0"},"os":{"name":"Windows","version":"11"},"device":{"type":"desktop","vendor":null,"model":null},"engine":"Blink","isBot":false,"botName":null}
+
+Use this FOR analytics pipelines that need to classify traffic by device or browser, detecting bot traffic in access logs, or adapting content based on client capabilities.
+
+Do NOT use for HTTP header analysis -- use utility_parse_http_headers instead. Do NOT use for web scraping -- use web_scrape_to_markdown instead. Do NOT use for SEO auditing -- use seo_audit_page instead.`,
       inputSchema: {
         type: "object",
         properties: {

@@ -3,7 +3,7 @@
   "name": "io.github.Br0ski777/user-agent-parser",
   "title": "User Agent Parser API",
   "description": "Parse user agents \u00e2\u20ac\u201d browser, OS, device, bot detection. x402 micropayment.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "websiteUrl": "https://github.com/Br0ski777/user-agent-parser-x402",
   "repository": {
     "url": "https://github.com/Br0ski777/user-agent-parser-x402",

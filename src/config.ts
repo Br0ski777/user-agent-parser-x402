@@ -9,7 +9,7 @@ export const API_CONFIG: ApiConfig = {
     {
       method: "POST",
       path: "/api/parse",
-      price: "$0.001",
+      price: "$0.003",
       description: "Parse a user agent string into structured data",
       toolName: "utility_parse_user_agent",
       toolDescription: `Use this when you need to parse a user agent string to identify the client's browser, OS, device type, and bot status. Returns fully structured data.
